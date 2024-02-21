@@ -6,6 +6,7 @@ import { getSingleUser } from '../utils/data/userData';
 import { getAllShowsBySignedInUser } from '../utils/data/showData';
 import { getAllParties } from '../utils/data/partyData';
 import TVShowModal from '../components/Modals/ShowModal';
+import PartyModal from '../components/Modals/PartyModal';
 
 function Home() {
   const [userDetail, setUserDetail] = useState({});
@@ -65,7 +66,7 @@ function Home() {
             All Parties
           </div>
           <div>
-            +
+            <PartyModal />
           </div>
         </div>
         <div>
