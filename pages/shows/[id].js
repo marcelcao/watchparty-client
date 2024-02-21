@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
-import { deleteShow, getSingleShow } from '../../utils/data/showData';
+import {
+  deleteShow, getSingleShow, markShowAsWatched, markShowAsWatching,
+} from '../../utils/data/showData';
 import TVShowModal from '../../components/Modals/ShowModal';
 
 function SingleShow() {
   const [singleShow, setSingleShow] = useState({});
+  const [change, setChange] = useState(true);
 
   const router = useRouter();
   const { id } = router.query;
@@ -19,10 +22,18 @@ function SingleShow() {
     }
   };
 
+  const watched = () => {
+    markShowAsWatched(id).then(setChange((prevState) => !prevState));
+  };
+
+  const watching = () => {
+    markShowAsWatching(id).then(setChange((prevState) => !prevState));
+  };
+
   useEffect(() => {
     getSingleShow(id)
       .then((data) => setSingleShow(data));
-  }, [id]);
+  }, [id, change]);
 
   return (
     <article className="single-tv-show">
@@ -36,18 +47,26 @@ function SingleShow() {
               onClick={deleteThisShow}
             >Delete Show
             </Button>
-            <Button
-              className="mark-show-btn"
-              onClick={deleteThisShow}
-            >Conditionally render marked as watched button
-            </Button>
+            {(singleShow.is_watching === true) ? (
+              <Button
+                className="mark-show-btn"
+                onClick={watched}
+              >Mark As Watched
+              </Button>
+            ) : (
+              <Button
+                className="mark-show-btn"
+                onClick={watching}
+              >Mark As Watching
+              </Button>
+            )}
           </div>
         </div>
         <div className="show-details-container">
           <h1>{singleShow.show_title}</h1>
           <h2>{singleShow.show_genre?.genre}</h2>
           <h3>{singleShow.show_description}</h3>
-          <p>{singleShow.is_watching ? 'Currently Watching' : 'Marked As Watched'}</p>
+          <p>{singleShow.is_watching ? 'Currently Watching' : 'Series Watched'}</p>
         </div>
       </div>
     </article>

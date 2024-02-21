@@ -64,10 +64,48 @@ const updateShow = (payload, uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const markShowAsWatched = (id, uid) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/shows/${id}/watched`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${uid}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(resolve)
+    .catch(reject);
+});
+
+const markShowAsWatching = (id, uid) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/shows/${id}/watching`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${uid}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getAllShowsBySignedInUser,
   getSingleShow,
   deleteShow,
   createShow,
   updateShow,
+  markShowAsWatched,
+  markShowAsWatching,
 };
