@@ -94,6 +94,13 @@ const leaveParty = (id, uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getPartyAttendees = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/parties/${id}/attendees`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getAllParties,
   getSingleParty,
@@ -102,4 +109,5 @@ export {
   updateParty,
   attendParty,
   leaveParty,
+  getPartyAttendees,
 };

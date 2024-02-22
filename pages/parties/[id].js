@@ -2,17 +2,32 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
-import { deleteParty, getSingleParty } from '../../utils/data/partyData';
+import {
+  attendParty, deleteParty, getPartyAttendees, getSingleParty, leaveParty,
+} from '../../utils/data/partyData';
 import PartyModal from '../../components/Modals/PartyModal';
 import { useAuth } from '../../utils/context/authContext';
 
-function SingleParty() {
+function SingleParty(onUpdate) {
   const [singleParty, setSingleParty] = useState({});
+  const [partyAttendees, setPartyAttendees] = useState([]);
 
   const router = useRouter();
   const { id } = router.query;
 
   const { user } = useAuth([]);
+
+  const attend = () => {
+    attendParty(singleParty.id).then(() => onUpdate());
+  };
+
+  const leave = () => {
+    leaveParty(singleParty.id).then(() => onUpdate());
+  };
+
+  const getAllPartyAttendees = () => {
+    getPartyAttendees(id).then((data) => setPartyAttendees(data));
+  };
 
   const deleteThisParty = () => {
     if (window.confirm('Delete Party')) {
@@ -24,7 +39,8 @@ function SingleParty() {
 
   useEffect(() => {
     getSingleParty(id)
-      .then((data) => setSingleParty(data));
+      .then((data) => setSingleParty(data))
+      .then(getAllPartyAttendees);
   }, [id]);
 
   return (
@@ -39,6 +55,18 @@ function SingleParty() {
                 Delete Party
               </Button>
             ) : ''}
+            {singleParty.attended ? (
+              <Button
+                onClick={leave}
+              >Leave
+              </Button>
+            )
+              : (
+                <Button
+                  onClick={attend}
+                >Attend
+                </Button>
+              )}
           </div>
         </div>
         <div className="party-details-container">
@@ -49,6 +77,11 @@ function SingleParty() {
           <h3>Discord Link:</h3>
           <p>{singleParty.discord_link}</p>
           <h3>Attendees:</h3>
+          {partyAttendees.map((attendee) => (
+            <div key={attendee.id}>
+              <p>@{attendee.user?.username}</p>
+            </div>
+          ))}
         </div>
       </div>
     </article>
