@@ -23,7 +23,7 @@ function Home() {
   };
 
   const getWatchParties = () => {
-    getAllParties().then((data) => setParties(data));
+    getAllParties(user.uid).then((data) => setParties(data));
   };
 
   useEffect(() => {
@@ -72,7 +72,7 @@ function Home() {
         <div>
           {parties.map((party) => (
             <section key={`party--${party.id}`} className="party">
-              <PartyCard partyObj={party} />
+              <PartyCard partyObj={party} attended={party.attended} />
             </section>
           ))}
         </div>
