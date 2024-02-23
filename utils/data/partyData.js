@@ -1,10 +1,11 @@
 import { clientCredentials } from '../client';
 
-const getAllParties = () => new Promise((resolve, reject) => {
+const getAllParties = (uid) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/parties`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `${uid}`,
     },
   })
     .then((response) => response.json())
@@ -70,7 +71,6 @@ const attendParty = (id, uid) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
       Authorization: `${uid}`,
     },
-    body: JSON.stringify({ userId: uid }),
   })
     .then((response) => resolve(response.json()))
     .catch(reject);
@@ -83,14 +83,8 @@ const leaveParty = (id, uid) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
       Authorization: `${uid}`,
     },
-    body: JSON.stringify({ userId: uid }),
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      resolve();
-    })
+    .then(resolve)
     .catch(reject);
 });
 

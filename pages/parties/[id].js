@@ -2,13 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
-import {
-  attendParty, deleteParty, getPartyAttendees, getSingleParty, leaveParty,
-} from '../../utils/data/partyData';
+import { deleteParty, getPartyAttendees, getSingleParty } from '../../utils/data/partyData';
 import PartyModal from '../../components/Modals/PartyModal';
 import { useAuth } from '../../utils/context/authContext';
 
-function SingleParty(onUpdate) {
+function SingleParty() {
   const [singleParty, setSingleParty] = useState({});
   const [partyAttendees, setPartyAttendees] = useState([]);
 
@@ -16,14 +14,6 @@ function SingleParty(onUpdate) {
   const { id } = router.query;
 
   const { user } = useAuth([]);
-
-  const attend = () => {
-    attendParty(singleParty.id).then(() => onUpdate());
-  };
-
-  const leave = () => {
-    leaveParty(singleParty.id).then(() => onUpdate());
-  };
 
   const getAllPartyAttendees = () => {
     getPartyAttendees(id).then((data) => setPartyAttendees(data));
@@ -55,18 +45,6 @@ function SingleParty(onUpdate) {
                 Delete Party
               </Button>
             ) : ''}
-            {singleParty.attended ? (
-              <Button
-                onClick={leave}
-              >Leave
-              </Button>
-            )
-              : (
-                <Button
-                  onClick={attend}
-                >Attend
-                </Button>
-              )}
           </div>
         </div>
         <div className="party-details-container">
