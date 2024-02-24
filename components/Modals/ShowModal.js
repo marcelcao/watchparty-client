@@ -15,7 +15,7 @@ const initialState = {
   user: '',
 };
 
-function TVShowModal({ obj }) {
+function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
   const [show, setShow] = useState(false);
   const [currentShow, setCurrentShow] = useState(initialState);
   const [showGenre, setShowGenre] = useState([]);
@@ -50,7 +50,6 @@ function TVShowModal({ obj }) {
   };
 
   const handleSubmit = (e) => {
-    const reload = () => window.location.reload();
     e.preventDefault();
 
     if (obj.id) {
@@ -65,7 +64,7 @@ function TVShowModal({ obj }) {
       };
       updateShow(update, user.uid).then(() => {
         handleClose();
-        reload();
+        fetchSingleShow();
       });
     } else {
       const tvShow = {
@@ -78,7 +77,7 @@ function TVShowModal({ obj }) {
       };
       createShow(tvShow, user.uid).then(() => {
         handleClose();
-        reload();
+        fetchShows();
       });
     }
   };
@@ -151,10 +150,14 @@ TVShowModal.propTypes = {
     }),
     is_watching: PropTypes.bool,
   }),
+  fetchShows: PropTypes.func,
+  fetchSingleShow: PropTypes.func,
 };
 
 TVShowModal.defaultProps = {
   obj: initialState,
+  fetchShows: PropTypes.func,
+  fetchSingleShow: PropTypes.func,
 };
 
 export default TVShowModal;

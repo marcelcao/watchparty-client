@@ -27,6 +27,10 @@ function SingleParty() {
     }
   };
 
+  const fetchSingleParty = () => {
+    getSingleParty(id).then((data) => setSingleParty(data));
+  };
+
   useEffect(() => {
     getSingleParty(id)
       .then((data) => setSingleParty(data))
@@ -39,7 +43,7 @@ function SingleParty() {
         <div className="show-img-container">
           <img className="show-img" src={singleParty.tv_show?.show_poster} alt={singleParty.tv_show?.show_title} style={{ width: '7rem', height: '10rem' }} />
           <div className="show-info-btns">
-            {(singleParty.organizer?.id === user.id) ? (<PartyModal obj={singleParty} />) : '' }
+            {(singleParty.organizer?.id === user.id) ? (<PartyModal obj={singleParty} fetchSingleParty={fetchSingleParty} />) : '' }
             {(singleParty.organizer?.id === user.id) ? (
               <Button className="delete-party-btn" onClick={deleteThisParty}>
                 Delete Party

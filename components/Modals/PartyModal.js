@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+// import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -17,19 +18,21 @@ const initialState = {
   time: '',
 };
 
-function PartyModal({ obj }) {
+function PartyModal({ obj, fetchParties, fetchSingleParty }) {
   const [show, setShow] = useState(false);
   const [currentParty, setCurrentParty] = useState(initialState);
   const [tv, setTv] = useState([]);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const { user } = useAuth();
+  const { user } = useAuth([]);
 
   const getUserShows = () => {
     getAllShowsBySignedInUser(user.uid).then((data) => setTv(data));
   };
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     getUserShows();
@@ -57,7 +60,6 @@ function PartyModal({ obj }) {
   };
 
   const handleSubmit = (e) => {
-    const reload = () => window.location.reload();
     e.preventDefault();
 
     if (obj.id) {
@@ -73,7 +75,7 @@ function PartyModal({ obj }) {
       };
       updateParty(update, user.uid).then(() => {
         handleClose();
-        reload();
+        fetchSingleParty();
       });
     } else {
       const newParty = {
@@ -87,7 +89,7 @@ function PartyModal({ obj }) {
       };
       createParty(newParty, user.uid).then(() => {
         handleClose();
-        reload();
+        fetchParties();
       });
     }
   };
@@ -170,10 +172,14 @@ PartyModal.propTypes = {
     date: PropTypes.string,
     time: PropTypes.string,
   }),
+  fetchParties: PropTypes.func,
+  fetchSingleParty: PropTypes.func,
 };
 
 PartyModal.defaultProps = {
   obj: initialState,
+  fetchParties: PropTypes.func,
+  fetchSingleParty: PropTypes.func,
 };
 
 export default PartyModal;

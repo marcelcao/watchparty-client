@@ -23,7 +23,7 @@ export default function PartyCard({ partyObj, onUpdate }) {
         <Card.Body className="card-body">
           <img className="show-img" src={partyObj.tv_show?.show_poster} alt={partyObj.party_name} style={{ width: '7rem', height: '10rem' }} />
           <Link href={`/parties/${partyObj.id}`} passHref>
-            <Card.Text>{partyObj.party_name}</Card.Text>
+            <Card.Text className="card-link">{partyObj.party_name}</Card.Text>
           </Link>
           {partyObj.attended ? (
             <Button

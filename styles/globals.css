@@ -22,6 +22,15 @@ body {
 }
 
 .party-card {
-  max-height: 15rem;
+  max-height: 20rem;
   max-width: 10rem;
+}
+
+.show-card-contain, .party-card-contain {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-link {
+  cursor: pointer;
 }
