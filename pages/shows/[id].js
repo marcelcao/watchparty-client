@@ -30,6 +30,10 @@ function SingleShow() {
     markShowAsWatching(id).then(setChange((prevState) => !prevState));
   };
 
+  const fetchSingleShow = () => {
+    getSingleShow(id).then((data) => setSingleShow(data));
+  };
+
   useEffect(() => {
     getSingleShow(id)
       .then((data) => setSingleShow(data));
@@ -41,7 +45,7 @@ function SingleShow() {
         <div className="show-img-container">
           <img className="show-img" src={singleShow.show_poster} alt={singleShow.show_title} style={{ width: '7rem', height: '10rem' }} />
           <div className="show-info-btns">
-            <TVShowModal obj={singleShow} />
+            <TVShowModal obj={singleShow} fetchSingleShow={fetchSingleShow} />
             <Button
               className="delete-show-btn"
               onClick={deleteThisShow}

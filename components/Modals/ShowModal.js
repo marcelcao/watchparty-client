@@ -8,14 +8,14 @@ import { updateShow, createShow } from '../../utils/data/showData';
 import getAllGenres from '../../utils/data/showGenre';
 
 const initialState = {
-  show_title: '',
-  show_description: '',
-  show_poster: '',
-  show_genre: 0,
+  showTitle: '',
+  showDescription: '',
+  showPoster: '',
+  showGenre: {},
   user: '',
 };
 
-function TVShowModal({ obj }) {
+function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
   const [show, setShow] = useState(false);
   const [currentShow, setCurrentShow] = useState(initialState);
   const [showGenre, setShowGenre] = useState([]);
@@ -50,7 +50,6 @@ function TVShowModal({ obj }) {
   };
 
   const handleSubmit = (e) => {
-    const reload = () => window.location.reload();
     e.preventDefault();
 
     if (obj.id) {
@@ -65,7 +64,7 @@ function TVShowModal({ obj }) {
       };
       updateShow(update, user.uid).then(() => {
         handleClose();
-        reload();
+        fetchSingleShow();
       });
     } else {
       const tvShow = {
@@ -78,7 +77,7 @@ function TVShowModal({ obj }) {
       };
       createShow(tvShow, user.uid).then(() => {
         handleClose();
-        reload();
+        fetchShows();
       });
     }
   };
@@ -96,6 +95,7 @@ function TVShowModal({ obj }) {
 
         <Modal.Body id="modal-body">
           <Form onSubmit={handleClose}>
+
             <Form.Group className="mb-3" controlId="formShowTitle">
               <Form.Label className="form-label">Show Title</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Title Here" name="showTitle" value={currentShow.showTitle} onChange={handleChange} required />
@@ -144,13 +144,20 @@ TVShowModal.propTypes = {
     show_title: PropTypes.string,
     show_description: PropTypes.string,
     show_poster: PropTypes.string,
-    show_genre: PropTypes.number,
+    show_genre: PropTypes.shape({
+      id: PropTypes.number,
+      genre: PropTypes.string,
+    }),
     is_watching: PropTypes.bool,
   }),
+  fetchShows: PropTypes.func,
+  fetchSingleShow: PropTypes.func,
 };
 
 TVShowModal.defaultProps = {
   obj: initialState,
+  fetchShows: PropTypes.func,
+  fetchSingleShow: PropTypes.func,
 };
 
 export default TVShowModal;

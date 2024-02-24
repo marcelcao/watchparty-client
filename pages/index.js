@@ -26,6 +26,14 @@ function Home() {
     getAllParties(user.uid).then((data) => setParties(data));
   };
 
+  const fetchParties = () => {
+    getWatchParties();
+  };
+
+  const fetchShows = () => {
+    getUserShows();
+  };
+
   useEffect(() => {
     getUser(user.id);
   }, [user.id]);
@@ -49,10 +57,10 @@ function Home() {
             Your Shows
           </div>
           <div>
-            <TVShowModal />
+            <TVShowModal fetchShows={fetchShows} />
           </div>
         </div>
-        <div>
+        <div className="show-card-contain">
           {shows.map((show) => (
             <section key={`show--${show.id}`} className="show">
               <ShowCard showObj={show} />
@@ -66,13 +74,13 @@ function Home() {
             All Parties
           </div>
           <div>
-            <PartyModal />
+            <PartyModal fetchParties={fetchParties} />
           </div>
         </div>
-        <div>
+        <div className="party-card-contain">
           {parties.map((party) => (
             <section key={`party--${party.id}`} className="party">
-              <PartyCard partyObj={party} attended={party.attended} />
+              <PartyCard partyObj={party} onUpdate={getWatchParties} attended={party.attended} />
             </section>
           ))}
         </div>

@@ -11,7 +11,7 @@ export default function ShowCard({ showObj }) {
         <Card.Body className="card-body">
           <img className="show-img" src={showObj.show_poster} alt={showObj.show_title} style={{ width: '7rem', height: '10rem' }} />
           <Link href={`/shows/${showObj.id}`} passHref>
-            <Card.Text>{showObj.show_title}</Card.Text>
+            <Card.Text className="card-link">{showObj.show_title}</Card.Text>
           </Link>
         </Card.Body>
       </Card>
