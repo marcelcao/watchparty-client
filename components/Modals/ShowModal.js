@@ -11,7 +11,7 @@ const initialState = {
   show_title: '',
   show_description: '',
   show_poster: '',
-  show_genre: 0,
+  show_genre: {},
   user: '',
 };
 
@@ -96,6 +96,7 @@ function TVShowModal({ obj }) {
 
         <Modal.Body id="modal-body">
           <Form onSubmit={handleClose}>
+
             <Form.Group className="mb-3" controlId="formShowTitle">
               <Form.Label className="form-label">Show Title</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Title Here" name="showTitle" value={currentShow.showTitle} onChange={handleChange} required />
@@ -144,7 +145,10 @@ TVShowModal.propTypes = {
     show_title: PropTypes.string,
     show_description: PropTypes.string,
     show_poster: PropTypes.string,
-    show_genre: PropTypes.number,
+    show_genre: PropTypes.shape({
+      id: PropTypes.number,
+      genre: PropTypes.string,
+    }),
     is_watching: PropTypes.bool,
   }),
 };

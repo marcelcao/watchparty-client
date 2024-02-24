@@ -6,15 +6,15 @@ import { Card, Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { attendParty, leaveParty } from '../../utils/data/partyData';
 
-export default function PartyCard({ partyObj }) {
+export default function PartyCard({ partyObj, onUpdate }) {
   const { user } = useAuth();
 
   const attend = () => {
-    attendParty(partyObj.id, user.uid).then();
+    attendParty(partyObj.id, user.uid).then(() => onUpdate());
   };
 
   const leave = () => {
-    leaveParty(partyObj.id, user.uid).then();
+    leaveParty(partyObj.id, user.uid).then(() => onUpdate());
   };
 
   return (
@@ -53,4 +53,5 @@ PartyCard.propTypes = {
     }),
     attended: PropTypes.bool.isRequired,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };

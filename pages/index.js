@@ -72,7 +72,7 @@ function Home() {
         <div>
           {parties.map((party) => (
             <section key={`party--${party.id}`} className="party">
-              <PartyCard partyObj={party} attended={party.attended} />
+              <PartyCard partyObj={party} onUpdate={getWatchParties} attended={party.attended} />
             </section>
           ))}
         </div>
