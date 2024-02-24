@@ -8,10 +8,10 @@ import { updateShow, createShow } from '../../utils/data/showData';
 import getAllGenres from '../../utils/data/showGenre';
 
 const initialState = {
-  show_title: '',
-  show_description: '',
-  show_poster: '',
-  show_genre: {},
+  showTitle: '',
+  showDescription: '',
+  showPoster: '',
+  showGenre: {},
   user: '',
 };
 

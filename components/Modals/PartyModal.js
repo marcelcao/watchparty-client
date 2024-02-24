@@ -8,10 +8,10 @@ import { getAllShowsBySignedInUser } from '../../utils/data/showData';
 import { updateParty, createParty } from '../../utils/data/partyData';
 
 const initialState = {
-  party_name: '',
-  party_description: '',
-  discord_link: '',
-  tv_show: {},
+  partyName: '',
+  partyDescription: '',
+  discordLink: '',
+  tvShow: {},
   organizer: '',
   date: '',
   time: '',
