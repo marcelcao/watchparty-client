@@ -4,11 +4,16 @@ import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import { deleteParty, getPartyAttendees, getSingleParty } from '../../utils/data/partyData';
 import PartyModal from '../../components/Modals/PartyModal';
+import CommentForm from '../../components/PartyCommentForm';
+// import CommentCard from '../../components/Cards/CommentCard';
 import { useAuth } from '../../utils/context/authContext';
+import { getCommentsOnSingleParty, deletePartyComment } from '../../utils/data/partyComments';
 
 function SingleParty() {
   const [singleParty, setSingleParty] = useState({});
   const [partyAttendees, setPartyAttendees] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [change, setChange] = useState(true);
 
   const router = useRouter();
   const { id } = router.query;
@@ -31,11 +36,22 @@ function SingleParty() {
     getSingleParty(id).then((data) => setSingleParty(data));
   };
 
+  const getAllComments = () => {
+    getCommentsOnSingleParty(id).then((data) => setComments(data));
+  };
+
+  const deleteComment = (commentId) => {
+    if (window.confirm('Do you want to delete this comment?')) {
+      deletePartyComment(commentId).then(setChange((prevState) => !prevState));
+    }
+  };
+
   useEffect(() => {
     getSingleParty(id)
       .then((data) => setSingleParty(data))
-      .then(getAllPartyAttendees);
-  }, [id]);
+      .then(getAllPartyAttendees)
+      .then(getAllComments);
+  }, [id, change]);
 
   return (
     <article className="single-tv-show">
@@ -62,6 +78,19 @@ function SingleParty() {
           {partyAttendees.map((attendee) => (
             <div key={attendee.id}>
               <p>@{attendee.user?.username}</p>
+            </div>
+          ))}
+        </div>
+        <div>
+          <CommentForm user={user} partyId={Number(id)} onSubmit={getAllComments} />
+        </div>
+        <div className="party-comments-container">
+          {comments.map((com) => (
+            <div key={com.id}>
+              <p>Comment by: @{com.author?.username}</p>
+              <p>Posted On: {com.posted_on}</p>
+              <p>{com.comment}</p>
+              <div>{(user.uid === com.author?.uid) ? (<Button className="delete-button" variant="black" onClick={() => deleteComment(com.id)}>Delete Comment</Button>) : ''}</div>
             </div>
           ))}
         </div>
