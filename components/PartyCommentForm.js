@@ -5,13 +5,13 @@ import { Button, Form } from 'react-bootstrap';
 import { createCommentOnParty, updatePartyComment } from '../utils/data/partyComments';
 
 const initialState = {
-  author: '',
+  author: {},
   party: 0,
   comment: '',
 };
 
 const CommentForm = ({
-  user, obj, partyId, onSubmit,
+  user, obj, partyId, onSubmit, cancelEdit,
 }) => {
   const [currentComment, setCurrentComment] = useState(initialState);
 
@@ -49,9 +49,9 @@ const CommentForm = ({
         postedOn: obj.postedOn,
         party: obj.party,
       };
-      updatePartyComment(editComment).then(
-        () => router.replace(`/parties/${partyId}`),
-      );
+      updatePartyComment(editComment)
+        .then(() => onSubmit())
+        .then(() => cancelEdit());
     } else {
       const comment = {
         comment: currentComment.comment,
@@ -67,9 +67,14 @@ const CommentForm = ({
     <>
       <Form onSubmit={handleSubmit} className="comment-form-cont">
         <input type="text" name="comment" className="input" placeholder="Add your comment here" required value={currentComment.comment} onChange={handleChange} />
-        <Button className="edit-btn" variant="primary" type="submit">
-          Submit
-        </Button>
+        {obj.id
+          ? (
+            <div>
+              <Button onClick={cancelEdit}>X</Button>
+            </div>
+          )
+          : ''}
+        <Button type="submit" variant="dark">{obj.id ? 'Update' : 'Add'} Comment</Button>
       </Form>
     </>
   );
@@ -82,17 +87,22 @@ CommentForm.propTypes = {
   obj: PropTypes.shape({
     id: PropTypes.number,
     comment: PropTypes.string,
-    author: PropTypes.number,
+    author: PropTypes.shape({
+      id: PropTypes.number,
+      uid: PropTypes.string,
+    }),
     party: PropTypes.number,
     postedOn: PropTypes.string,
   }),
   partyId: PropTypes.number,
   onSubmit: PropTypes.func.isRequired,
+  cancelEdit: PropTypes.func,
 };
 
 CommentForm.defaultProps = {
   obj: initialState,
   partyId: 0,
+  cancelEdit: () => {},
 };
 
 export default CommentForm;

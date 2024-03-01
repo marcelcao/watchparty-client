@@ -13,6 +13,7 @@ function SingleParty() {
   const [singleParty, setSingleParty] = useState({});
   const [partyAttendees, setPartyAttendees] = useState([]);
   const [comments, setComments] = useState([]);
+  const [editComment, setEditComment] = useState(null);
   const [change, setChange] = useState(true);
 
   const router = useRouter();
@@ -44,6 +45,14 @@ function SingleParty() {
     if (window.confirm('Do you want to delete this comment?')) {
       deletePartyComment(commentId).then(setChange((prevState) => !prevState));
     }
+  };
+
+  const handleEditComment = (commentId) => {
+    setEditComment(commentId);
+  };
+
+  const cancelCommentEdit = () => {
+    setEditComment(null);
   };
 
   useEffect(() => {
@@ -86,12 +95,17 @@ function SingleParty() {
         </div>
         <div className="party-comments-container">
           {comments.map((com) => (
-            <div key={com.id}>
-              <p>Comment by: @{com.author?.username}</p>
-              <p>Posted On: {com.posted_on}</p>
-              <p>{com.comment}</p>
-              <div>{(user.uid === com.author?.uid) ? (<Button className="delete-button" variant="black" onClick={() => deleteComment(com.id)}>Delete Comment</Button>) : ''}</div>
-            </div>
+            editComment === com.id ? (
+              <CommentForm key={com.id} obj={comments} cancelEdit={cancelCommentEdit} onSubmit={getAllComments} partyId={Number(id)} />
+            ) : (
+              <div key={com.id}>
+                <p>Comment by: @{com.author?.username}</p>
+                <p>Posted On: {com.posted_on}</p>
+                <p>{com.comment}</p>
+                <div>{(user.uid === com.author?.uid) ? (<Button className="delete-button" variant="black" onClick={() => deleteComment(com.id)}>Delete</Button>) : ''}</div>
+                <div>{(user.uid === com.author?.uid) ? (<Button className="edit-button" variant="black" onClick={() => handleEditComment(com.id)}>Edit</Button>) : ''}</div>
+              </div>
+            )
           ))}
         </div>
       </div>
