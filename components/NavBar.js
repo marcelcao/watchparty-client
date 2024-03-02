@@ -7,9 +7,10 @@ import {
   Nav,
   Button,
 } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { signOut } from '../utils/auth';
 
-export default function NavBar() {
+export default function NavBar({ user }) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -20,6 +21,12 @@ export default function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
+            {/* <Link passHref href={`/profile/${user.username}`}>
+              <Nav.Link>Profile</Nav.Link>
+            </Link> */}
+            <Link passHref href={`/profile/${user.username}`}>
+              <Nav.Link>Profile</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>
               Sign Out
             </Button>
@@ -29,3 +36,9 @@ export default function NavBar() {
     </Navbar>
   );
 }
+
+NavBar.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string,
+  }).isRequired,
+};
