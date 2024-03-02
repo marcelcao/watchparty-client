@@ -6,8 +6,9 @@ import { createCommentOnParty, updatePartyComment } from '../utils/data/partyCom
 
 const initialState = {
   author: {},
-  party: 0,
+  party: {},
   comment: '',
+  postedOn: new Date().toISOString(),
 };
 
 const CommentForm = ({
@@ -21,9 +22,9 @@ const CommentForm = ({
     if (obj.id) {
       setCurrentComment({
         id: obj.id,
-        author: user.uid,
+        author: user?.uid,
         party: partyId,
-        postedOn: obj.postedOn,
+        postedOn: obj.posted_on,
         comment: obj.comment,
       });
     }
@@ -44,10 +45,10 @@ const CommentForm = ({
     if (obj.id) {
       const editComment = {
         id: obj.id,
-        author: obj.author,
+        author: user?.uid,
         comment: currentComment.comment,
-        postedOn: obj.postedOn,
-        party: obj.party,
+        postedOn: obj.posted_on,
+        party: obj.party?.id,
       };
       updatePartyComment(editComment)
         .then(() => onSubmit())
@@ -91,8 +92,10 @@ CommentForm.propTypes = {
       id: PropTypes.number,
       uid: PropTypes.string,
     }),
-    party: PropTypes.number,
-    postedOn: PropTypes.string,
+    party: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+    posted_on: PropTypes.string,
   }),
   partyId: PropTypes.number,
   onSubmit: PropTypes.func.isRequired,

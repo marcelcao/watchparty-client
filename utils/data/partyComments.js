@@ -27,7 +27,7 @@ const createCommentOnParty = (uid, id, comment) => new Promise((resolve, reject)
 });
 
 const updatePartyComment = (comment, uid) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/partycomments/${comment}`, {
+  fetch(`${clientCredentials.databaseURL}/partycomments/${comment.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

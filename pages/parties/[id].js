@@ -96,7 +96,7 @@ function SingleParty() {
         <div className="party-comments-container">
           {comments.map((com) => (
             editComment === com.id ? (
-              <CommentForm key={com.id} obj={comments} cancelEdit={cancelCommentEdit} onSubmit={getAllComments} partyId={Number(id)} />
+              <CommentForm key={com.id} user={user} obj={com} cancelEdit={cancelCommentEdit} onSubmit={getAllComments} partyId={Number(id)} />
             ) : (
               <div key={com.id}>
                 <p>Comment by: @{com.author?.username}</p>
