@@ -30,6 +30,28 @@ const registerUser = (userInfo) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getUsername = (username) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/getusername`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve((data));
+      } else {
+        resolve({});
+      }
+    })
+    .catch(reject);
+});
+
 const signIn = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider);
@@ -44,4 +66,5 @@ export {
   signOut,
   checkUser,
   registerUser,
+  getUsername,
 };
