@@ -27,6 +27,9 @@ export default function NavBar({ user }) {
             <Link passHref href={`/profile/${user.username}`}>
               <Nav.Link>Profile</Nav.Link>
             </Link>
+            <Link passHref href="/community">
+              <Nav.Link>Community</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>
               Sign Out
             </Button>
