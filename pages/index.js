@@ -46,6 +46,12 @@ function Home() {
     getWatchParties();
   }, []);
 
+  const sortedShows = shows.sort((a, b) => b.id - a.id);
+  const mostRecentShows = sortedShows.slice(0, 5);
+
+  const sortedParties = parties.sort((a, b) => b.id - a.id);
+  const mostRecentParties = sortedParties.slice(0, 5);
+
   return (
     <>
       <div className="welcome-mesage">
@@ -54,14 +60,14 @@ function Home() {
       <div className="user-shows-container">
         <div>
           <div>
-            Your Shows
+            Your Recently Added Shows:
           </div>
           <div>
             <TVShowModal fetchShows={fetchShows} />
           </div>
         </div>
         <div className="show-card-contain">
-          {shows.map((show) => (
+          {mostRecentShows.map((show) => (
             <section key={`show--${show.id}`} className="show">
               <ShowCard showObj={show} />
             </section>
@@ -71,14 +77,14 @@ function Home() {
       <div className="watch-parties-container">
         <div>
           <div>
-            All Parties
+            Recently Added Parties:
           </div>
           <div>
             <PartyModal fetchParties={fetchParties} />
           </div>
         </div>
         <div className="party-card-contain">
-          {parties.map((party) => (
+          {mostRecentParties.map((party) => (
             <section key={`party--${party.id}`} className="party">
               <PartyCard partyObj={party} onUpdate={getWatchParties} attended={party.attended} />
             </section>

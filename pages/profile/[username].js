@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getUserParties } from '../../utils/data/partyData';
 import { getUsername } from '../../utils/auth';
-import PartyCard from '../../components/Cards/PartyCard';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -39,11 +39,14 @@ export default function ProfilePage() {
         <p>{profile.bio}</p>
       </div>
       <div className="user-party-container">
-        Your Parties
+        <h1>Your Parties</h1>
         {parties.map((party) => (
-          <section key={`party--${party.id}`} className="party">
-            <PartyCard partyObj={party} attended={party.attended} onUpdate={getAllPartiesbyUser} />
-          </section>
+          <div key={party.id}>
+            <img className="show-img" src={party.tv_show?.show_poster} alt={party.tv_show?.show_title} style={{ width: '7rem', height: '10rem' }} />
+            <Link href={`/parties/${party.id}`} passHref>
+              <p>{party.party_name}</p>
+            </Link>
+          </div>
         ))}
       </div>
     </div>
