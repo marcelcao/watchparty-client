@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import React from 'react';
 import { Card } from 'react-bootstrap';
 
@@ -9,7 +10,9 @@ export default function UserCard({ userObj }) {
       <Card className="user-card">
         <Card.Body className="card-body">
           <img className="show-img" src={userObj.image_url} alt={userObj.username} style={{ width: '3rem', height: '3rem' }} />
-          <Card.Text className="card-name">{userObj.username}</Card.Text>
+          <Link href={`/profile/${userObj.username}`} passHref>
+            <Card.Text className="card-name">{userObj.username}</Card.Text>
+          </Link>
         </Card.Body>
       </Card>
     </>

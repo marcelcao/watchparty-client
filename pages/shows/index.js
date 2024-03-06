@@ -36,7 +36,7 @@ function AllShows() {
       <div className="user-shows-container">
         <div>
           <div>
-            Your Shows:
+            Your TV Shows:
           </div>
           <div>
             <TVShowModal fetchShows={fetchShows} />

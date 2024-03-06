@@ -2,12 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
-import { deleteParty, getPartyAttendees, getSingleParty } from '../../utils/data/partyData';
+import {
+  deleteParty,
+  getPartyAttendees,
+  getSingleParty,
+} from '../../utils/data/partyData';
 import PartyModal from '../../components/Modals/PartyModal';
 import CommentForm from '../../components/PartyCommentForm';
-// import CommentCard from '../../components/Cards/CommentCard';
 import { useAuth } from '../../utils/context/authContext';
 import { getCommentsOnSingleParty, deletePartyComment } from '../../utils/data/partyComments';
+import AttendeeCard from '../../components/Cards/AttendeeCard';
 
 function SingleParty() {
   const [singleParty, setSingleParty] = useState({});
@@ -26,7 +30,7 @@ function SingleParty() {
   };
 
   const deleteThisParty = () => {
-    if (window.confirm('Delete Party')) {
+    if (window.confirm('Delete Party?')) {
       deleteParty(id).then(() => {
         router.push('/');
       });
@@ -85,9 +89,7 @@ function SingleParty() {
           <p>{singleParty.discord_link}</p>
           <h3>Attendees:</h3>
           {partyAttendees.map((attendee) => (
-            <div key={attendee.id}>
-              <p>@{attendee.user?.username}</p>
-            </div>
+            <AttendeeCard key={attendee.id} obj={attendee} user={user} onUpdate={getAllPartyAttendees} />
           ))}
         </div>
         <div>

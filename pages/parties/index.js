@@ -36,7 +36,7 @@ function AllParties() {
       <div className="watch-parties-container">
         <div>
           <div>
-            All Parties:
+            All Community Watch Parties:
           </div>
           <div>
             <PartyModal fetchParties={fetchParties} />
