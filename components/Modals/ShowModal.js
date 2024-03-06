@@ -20,7 +20,11 @@ function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
   const [currentShow, setCurrentShow] = useState(initialState);
   const [showGenre, setShowGenre] = useState([]);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setCurrentShow(initialState);
+  };
+
   const handleShow = () => setShow(true);
 
   const { user } = useAuth();

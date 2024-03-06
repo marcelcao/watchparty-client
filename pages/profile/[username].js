@@ -39,15 +39,19 @@ export default function ProfilePage() {
         <p>{profile.bio}</p>
       </div>
       <div className="user-party-container">
-        <h1>Your Parties</h1>
-        {parties.map((party) => (
-          <div key={party.id}>
-            <img className="show-img" src={party.tv_show?.show_poster} alt={party.tv_show?.show_title} style={{ width: '7rem', height: '10rem' }} />
-            <Link href={`/parties/${party.id}`} passHref>
-              <p>{party.party_name}</p>
-            </Link>
-          </div>
-        ))}
+        <h1>Party List</h1>
+        {parties.length === 0 ? (
+          <p>No parties yet</p>
+        ) : (
+          parties.map((party) => (
+            <div key={party.id}>
+              <img className="show-img" src={party.tv_show?.show_poster} alt={party.tv_show?.show_title} style={{ width: '7rem', height: '10rem' }} />
+              <Link href={`/parties/${party.id}`} passHref>
+                <p>{party.party_name}</p>
+              </Link>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
