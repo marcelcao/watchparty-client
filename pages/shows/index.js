@@ -31,6 +31,10 @@ function AllShows() {
     setShowTVShow(shows);
   }, [shows]);
 
+  useEffect(() => {
+    document.title = 'Your Shows - Watch Party';
+  }, []);
+
   return (
     <>
       <div className="user-shows-container">

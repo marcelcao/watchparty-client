@@ -66,6 +66,10 @@ function SingleParty() {
       .then(getAllComments);
   }, [id, change]);
 
+  useEffect(() => {
+    document.title = `${singleParty.party_name || 'Loading...'} - Watch Party`;
+  }, [singleParty.party_name]);
+
   return (
     <article className="single-tv-show">
       <div className="show-body">

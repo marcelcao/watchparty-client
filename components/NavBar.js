@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
@@ -12,10 +13,12 @@ import { signOut } from '../utils/auth';
 
 export default function NavBar({ user }) {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
+    <Navbar collapseOnSelect expand="lg" id="nav">
+      <Container className="nav">
         <Link passHref href="/">
-          <Navbar.Brand>WATCH PARTY</Navbar.Brand>
+          <Navbar.Brand>
+            <img src="/wplogo.png" alt="Watch Party Logo" className="nav-logo" />
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -25,18 +28,18 @@ export default function NavBar({ user }) {
               <Nav.Link>Profile</Nav.Link>
             </Link> */}
             <Link passHref href={`/profile/${user.username}`}>
-              <Nav.Link>Profile</Nav.Link>
+              <Nav.Link id="navlink">Profile</Nav.Link>
             </Link>
             <Link passHref href="/shows">
-              <Nav.Link>Your Shows</Nav.Link>
+              <Nav.Link id="navlink">Your Shows</Nav.Link>
             </Link>
             <Link passHref href="/parties">
-              <Nav.Link>All Parties</Nav.Link>
+              <Nav.Link id="navlink">All Parties</Nav.Link>
             </Link>
             <Link passHref href="/community">
-              <Nav.Link>Community</Nav.Link>
+              <Nav.Link id="navlink">Community</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>
+            <Button className="sign-out-btn" onClick={signOut}>
               Sign Out
             </Button>
           </Nav>

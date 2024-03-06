@@ -9,6 +9,10 @@ export default function Community() {
     getAllUsers().then((data) => setAllUsers(data));
   }, [allUsers]);
 
+  useEffect(() => {
+    document.title = 'Community - Watch Party';
+  }, []);
+
   return (
     <div>
       <h1>Watch Party Community</h1>

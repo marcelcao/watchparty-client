@@ -30,6 +30,10 @@ export default function ProfilePage() {
     }
   }, [profile.uid]);
 
+  useEffect(() => {
+    document.title = `@${profile.username || 'Loading...'} - Watch Party`;
+  }, [profile.username]);
+
   return (
     <div>
       <div className="user-profile-container">

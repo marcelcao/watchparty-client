@@ -39,6 +39,10 @@ function SingleShow() {
       .then((data) => setSingleShow(data));
   }, [id, change]);
 
+  useEffect(() => {
+    document.title = `${singleShow.show_title || 'Loading...'} - Watch Party`;
+  }, [singleShow.show_title]);
+
   return (
     <article className="single-tv-show">
       <div className="show-body">

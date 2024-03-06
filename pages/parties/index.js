@@ -31,6 +31,10 @@ function AllParties() {
     setShowParties(parties);
   }, [parties]);
 
+  useEffect(() => {
+    document.title = 'Parties - Watch Party';
+  }, []);
+
   return (
     <>
       <div className="watch-parties-container">

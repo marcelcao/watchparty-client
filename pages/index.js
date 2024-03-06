@@ -46,6 +46,10 @@ function Home() {
     getWatchParties();
   }, []);
 
+  useEffect(() => {
+    document.title = 'Home - Watch Party';
+  }, []);
+
   const sortedShows = shows.sort((a, b) => b.id - a.id);
   const mostRecentShows = sortedShows.slice(0, 5);
 
