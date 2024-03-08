@@ -1,5 +1,8 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 html,
 body {
@@ -18,8 +21,8 @@ a {
 }
 
 body {
-  background-image: linear-gradient(to bottom, #45208f, #4e2b93, #563597, #5e3f9b, #66499f, #634799, #604692, #5d448c, #4f377b, #402a6a, #331d59, #251149);
-  height: 100vh;
+  background-image: linear-gradient(to bottom, #6f6ceb, #6b68e3, #6664da, #6260d2, #5e5cca, #5856be, #5250b1, #4c4aa5, #424192, #383880, #2f2f6e, #26265c);
+  height: 150vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,8 +90,8 @@ body {
 }
 
 #nav {
-  background: rgba(50, 29, 92, 0.45);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  background: #6F6CEB;
+  box-shadow: 0 8px 32px 0 #6F6CEB;
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
   height: 12vh;
@@ -105,6 +108,67 @@ body {
 
 .sign-out-btn {
   background-color: #6d38d6;
-  border-color: #45208F;
+  border-color: #6F6CEB;
   color: white;
+}
+
+#app-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  color: #3EFEFE;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  height: 7vh;
+  text-align: center;
+}
+
+.welcome-message {
+  text-align: center;
+  color: #45208F;
+  font-size: 4rem;
+  margin-top: 2rem;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+#home-header {
+  color: white;
+  font-size: 2rem;
+  margin-top: 1rem;
+  padding-top: .5rem;
+}
+
+.user-shows-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.show-modal-create {
+  color: #3EFEFE;
+  background: #6f6ceb;
+  border-color: transparent;
+  font-size: 3rem;
+  height: 5rem;
+  background-color: transparent;
+  font-weight: 900;
+}
+
+.show-modal-create:hover {
+  color: #3EFEFE;
+  background: #6f6ceb;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.party-card {
+  max-width: 18rem;
+  max-height: 25rem;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.slick-slide > div {
+  margin: 0;
 }

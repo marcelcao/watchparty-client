@@ -88,9 +88,15 @@ function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
 
   return (
     <>
-      <Button onClick={handleShow} className="rout-modal">
-        <p className="form-label">{obj.id ? 'Update TV Show' : '+'}</p>
-      </Button>
+      {(obj.id) ? (
+        <Button onClick={handleShow} className="show-modal-update">
+          <p className="form-label">Update</p>
+        </Button>
+      ) : (
+        <Button onClick={handleShow} className="show-modal-create">
+          <p className="form-label">+</p>
+        </Button>
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton id="modal-head">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
 import { useAuth } from '../utils/context/authContext';
 import ShowCard from '../components/Cards/ShowCard';
 import PartyCard from '../components/Cards/PartyCard';
@@ -34,6 +35,41 @@ function Home() {
     getUserShows();
   };
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   useEffect(() => {
     getUser(user.id);
   }, [user.id]);
@@ -58,30 +94,30 @@ function Home() {
 
   return (
     <>
-      <div className="welcome-mesage">
+      <div className="welcome-message">
         Welcome @{userDetail.username}!
       </div>
-      <div className="user-shows-container">
-        <div>
+      <div>
+        <div className="user-shows-container">
           <div>
-            Your Recently Added Shows:
+            <h1 id="home-header">Your Recently Added Shows</h1>
           </div>
           <div>
             <TVShowModal fetchShows={fetchShows} />
           </div>
         </div>
-        <div className="show-card-contain">
+        <Slider {...settings}>
           {mostRecentShows.map((show) => (
             <section key={`show--${show.id}`} className="show">
               <ShowCard showObj={show} />
             </section>
           ))}
-        </div>
+        </Slider>
       </div>
       <div className="watch-parties-container">
         <div>
           <div>
-            Recently Added Parties:
+            <h1 id="home-header">Recently Added Parties</h1>
           </div>
           <div>
             <PartyModal fetchParties={fetchParties} />

@@ -22,26 +22,26 @@ export default function NavBar({ user }) {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
-            {/* <Link passHref href={`/profile/${user.username}`}>
-              <Nav.Link>Profile</Nav.Link>
-            </Link> */}
-            <Link passHref href={`/profile/${user.username}`}>
-              <Nav.Link id="navlink">Profile</Nav.Link>
-            </Link>
-            <Link passHref href="/shows">
-              <Nav.Link id="navlink">Your Shows</Nav.Link>
-            </Link>
-            <Link passHref href="/parties">
-              <Nav.Link id="navlink">All Parties</Nav.Link>
-            </Link>
-            <Link passHref href="/community">
-              <Nav.Link id="navlink">Community</Nav.Link>
-            </Link>
-            <Button className="sign-out-btn" onClick={signOut}>
-              Sign Out
-            </Button>
+          <Nav className="nav-items">
+            <Nav className="links">
+              <Link passHref href={`/profile/${user.username}`}>
+                <Nav.Link id="navlink">Profile</Nav.Link>
+              </Link>
+              <Link passHref href="/shows">
+                <Nav.Link id="navlink">Your Shows</Nav.Link>
+              </Link>
+              <Link passHref href="/parties">
+                <Nav.Link id="navlink">All Parties</Nav.Link>
+              </Link>
+              <Link passHref href="/community">
+                <Nav.Link id="navlink">Community</Nav.Link>
+              </Link>
+            </Nav>
+            <Nav className="sign-out-container">
+              <Button className="sign-out-btn" onClick={signOut}>
+                Sign Out
+              </Button>
+            </Nav>
           </Nav>
         </Navbar.Collapse>
       </Container>
