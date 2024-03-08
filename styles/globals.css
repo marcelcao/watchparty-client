@@ -22,15 +22,11 @@ a {
 
 body {
   background-image: linear-gradient(to bottom, #6f6ceb, #6b68e3, #6664da, #6260d2, #5e5cca, #5856be, #5250b1, #4c4aa5, #424192, #383880, #2f2f6e, #26265c);
-  height: 150vh;
+  height: auto;
+  width: auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.party-card {
-  max-height: 20rem;
-  max-width: 10rem;
 }
 
 .show-card-contain, .party-card-contain {
@@ -137,15 +133,16 @@ body {
   font-size: 2rem;
   margin-top: 1rem;
   padding-top: .5rem;
+  margin-bottom: 2rem;
 }
 
-.user-shows-container {
+.user-shows-container, .watch-parties-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.show-modal-create {
+.show-modal-create, .party-modal-create {
   color: #3EFEFE;
   background: #6f6ceb;
   border-color: transparent;
@@ -155,20 +152,58 @@ body {
   font-weight: 900;
 }
 
-.show-modal-create:hover {
+.show-modal-create:active, .party-modal-create:active {
+  background: #6f6ceb;
+  background-color: transparent;
+}
+
+.show-modal-create:hover, .party-modal-update:hover {
   color: #3EFEFE;
   background: #6f6ceb;
   border-color: transparent;
   background-color: transparent;
 }
 
-.party-card {
+.party-card, .show-card {
   max-width: 18rem;
   max-height: 25rem;
   background-color: transparent;
   border-color: transparent;
+  overflow: hidden;
+}
+
+
+.card-body {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -105%;
+  position: absolute;
+  background: rgba(111, 108, 235, .4);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 1s;
+}
+
+.party-card:hover .card-body, .show-card:hover .card-body {
+  right: 0;
 }
 
 .slick-slide > div {
   margin: 0;
+}
+
+.party-subtext {
+  font-size: medium;
+  color: white;
+}
+
+.party-title, .show-title {
+  font-family: 'Archivo Black', sans-serif;
+  color: #61ffff;
+  font-size: x-large;
 }

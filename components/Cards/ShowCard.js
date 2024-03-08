@@ -7,11 +7,12 @@ import { Card } from 'react-bootstrap';
 export default function ShowCard({ showObj }) {
   return (
     <>
-      <Card className="party-card">
-        <Card.Body className="card-body">
-          <Link href={`/shows/${showObj.id}`} passHref>
-            <img className="show-img" src={showObj.show_poster} alt={showObj.show_title} style={{ width: '18rem', height: '24rem' }} />
-          </Link>
+      <Card className="show-card">
+        <Link href={`/shows/${showObj.id}`} passHref>
+          <img className="show-img" src={showObj.show_poster} alt={showObj.show_title} style={{ width: '18rem', height: '25rem' }} />
+        </Link>
+        <Card.Body className="show-card-body">
+          <Card.Text className="show-title">{showObj.show_title}</Card.Text>
         </Card.Body>
       </Card>
     </>

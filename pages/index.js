@@ -87,10 +87,10 @@ function Home() {
   }, []);
 
   const sortedShows = shows.sort((a, b) => b.id - a.id);
-  const mostRecentShows = sortedShows.slice(0, 5);
+  const mostRecentShows = sortedShows.slice(0, 8);
 
   const sortedParties = parties.sort((a, b) => b.id - a.id);
-  const mostRecentParties = sortedParties.slice(0, 5);
+  const mostRecentParties = sortedParties.slice(0, 8);
 
   return (
     <>
@@ -114,8 +114,8 @@ function Home() {
           ))}
         </Slider>
       </div>
-      <div className="watch-parties-container">
-        <div>
+      <div>
+        <div className="watch-parties-container">
           <div>
             <h1 id="home-header">Recently Added Parties</h1>
           </div>
@@ -123,13 +123,13 @@ function Home() {
             <PartyModal fetchParties={fetchParties} />
           </div>
         </div>
-        <div className="party-card-contain">
+        <Slider {...settings}>
           {mostRecentParties.map((party) => (
             <section key={`party--${party.id}`} className="party">
               <PartyCard partyObj={party} onUpdate={getWatchParties} attended={party.attended} />
             </section>
           ))}
-        </div>
+        </Slider>
       </div>
     </>
   );

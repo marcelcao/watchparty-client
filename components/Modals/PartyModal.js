@@ -96,9 +96,15 @@ function PartyModal({ obj, fetchParties, fetchSingleParty }) {
 
   return (
     <>
-      <Button onClick={handleShow} className="party-modal">
-        <p className="form-label">{obj.id ? 'Update Party' : '+'}</p>
-      </Button>
+      {(obj.id) ? (
+        <Button onClick={handleShow} className="party-modal-update">
+          <p className="form-label">Update</p>
+        </Button>
+      ) : (
+        <Button onClick={handleShow} className="party-modal-create">
+          <p className="form-label">+</p>
+        </Button>
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton id="modal-head">

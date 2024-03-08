@@ -20,11 +20,13 @@ export default function PartyCard({ partyObj, onUpdate }) {
   return (
     <>
       <Card className="party-card">
+        <img className="show-img" src={partyObj.tv_show?.show_poster} alt={partyObj.party_name} style={{ width: '18rem', height: '25rem' }} />
         <Card.Body className="card-body">
-          <img className="show-img" src={partyObj.tv_show?.show_poster} alt={partyObj.party_name} style={{ width: '7rem', height: '10rem' }} />
           <Link href={`/parties/${partyObj.id}`} passHref>
-            <Card.Text className="card-link">{partyObj.party_name}</Card.Text>
+            <Card.Text className="party-title">{partyObj.party_name}</Card.Text>
           </Link>
+          <Card.Text className="party-subtext">By: @{partyObj.organizer?.username}</Card.Text>
+          <Card.Text className="party-subtext">{partyObj.party_description}</Card.Text>
           {partyObj.attended ? (
             <Button
               onClick={leave}
@@ -47,9 +49,13 @@ PartyCard.propTypes = {
   partyObj: PropTypes.shape({
     id: PropTypes.number.isRequired,
     party_name: PropTypes.string.isRequired,
+    party_description: PropTypes.string.isRequired,
     tv_show: PropTypes.shape({
       id: PropTypes.number,
       show_poster: PropTypes.string,
+    }),
+    organizer: PropTypes.shape({
+      username: PropTypes.string,
     }),
     attended: PropTypes.bool.isRequired,
   }).isRequired,
