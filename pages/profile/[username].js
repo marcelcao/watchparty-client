@@ -35,7 +35,7 @@ export default function ProfilePage() {
   }, [profile.username]);
 
   return (
-    <div>
+    <div className="profile-page">
       <div className="user-profile-container">
         <img className="profile-img" src={profile.image_url} alt={profile.username} style={{ width: '10rem', height: '10rem' }} />
         <h1>{profile.first_name} {profile.last_name}</h1>

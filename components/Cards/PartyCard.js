@@ -21,7 +21,7 @@ export default function PartyCard({ partyObj, onUpdate }) {
     <>
       <Card className="party-card">
         <img className="show-img" src={partyObj.tv_show?.show_poster} alt={partyObj.party_name} style={{ width: '18rem', height: '25rem' }} />
-        <Card.Body className="card-body">
+        <Card.Body className="party-card-body">
           <Link href={`/parties/${partyObj.id}`} passHref>
             <Card.Text className="party-title">{partyObj.party_name}</Card.Text>
           </Link>
@@ -29,12 +29,14 @@ export default function PartyCard({ partyObj, onUpdate }) {
           <Card.Text className="party-subtext">{partyObj.party_description}</Card.Text>
           {partyObj.attended ? (
             <Button
+              className="submit-btn"
               onClick={leave}
             >Leave
             </Button>
           )
             : (
               <Button
+                className="submit-btn"
                 onClick={attend}
               >Attend
               </Button>

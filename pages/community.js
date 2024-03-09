@@ -14,13 +14,15 @@ export default function Community() {
   }, []);
 
   return (
-    <div>
-      <h1>Watch Party Community</h1>
-      {allUsers.map((user) => (
-        <section key={`user--${user.id}`} className="user">
-          <UserCard userObj={user} />
-        </section>
-      ))}
+    <div className="community-page">
+      <h1 id="home-header">Watch Party Community</h1>
+      <div className="users-container">
+        {allUsers.map((user) => (
+          <section key={`user--${user.id}`}>
+            <UserCard userObj={user} />
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

@@ -8,10 +8,10 @@ export default function UserCard({ userObj }) {
   return (
     <>
       <Card className="user-card">
-        <Card.Body className="card-body">
-          <img className="show-img" src={userObj.image_url} alt={userObj.username} style={{ width: '3rem', height: '3rem' }} />
+        <Card.Body className="user-card-body">
+          <img className="profile-img" src={userObj.image_url} alt={userObj.username} />
           <Link href={`/profile/${userObj.username}`} passHref>
-            <Card.Text className="card-name">{userObj.username}</Card.Text>
+            <Card.Text className="card-link">@{userObj.username}</Card.Text>
           </Link>
         </Card.Body>
       </Card>

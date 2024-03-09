@@ -8,11 +8,11 @@ export default function ShowCard({ showObj }) {
   return (
     <>
       <Card className="show-card">
-        <Link href={`/shows/${showObj.id}`} passHref>
-          <img className="show-img" src={showObj.show_poster} alt={showObj.show_title} style={{ width: '18rem', height: '25rem' }} />
-        </Link>
+        <img className="show-img" src={showObj.show_poster} alt={showObj.show_title} style={{ width: '18rem', height: '25rem' }} />
         <Card.Body className="show-card-body">
-          <Card.Text className="show-title">{showObj.show_title}</Card.Text>
+          <Link href={`/shows/${showObj.id}`} passHref>
+            <Card.Text className="show-title">{showObj.show_title}</Card.Text>
+          </Link>
         </Card.Body>
       </Card>
     </>

@@ -16,10 +16,10 @@ export default function AttendeeCard({ obj, onUpdate, user }) {
   return (
     <>
       <Card className="user-card">
-        <Card.Body className="card-body">
+        <Card.Body className="user-card-body">
           <img className="show-img" src={obj.user?.image_url} alt={obj.user?.username} style={{ width: '3rem', height: '3rem' }} />
           <Link href={`/profile/${obj.user?.username}`} passHref>
-            <Card.Text className="card-name">{obj.user?.username}</Card.Text>
+            <Card.Text className="card-link">{obj.user?.username}</Card.Text>
           </Link>
           {(user.id === obj.party?.organizer ? (<Button className="delete-button" variant="black" onClick={() => removeAttendeeAsAdmin(obj.id)}>X</Button>) : '')}
         </Card.Body>

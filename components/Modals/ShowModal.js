@@ -107,22 +107,22 @@ function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
           <Form onSubmit={handleClose}>
 
             <Form.Group className="mb-3" controlId="formShowTitle">
-              <Form.Label className="form-label">Show Title</Form.Label>
+              <Form.Label id="form-label">Show Title</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Title Here" name="showTitle" value={currentShow.showTitle} onChange={handleChange} required />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formShowDescription">
-              <Form.Label>Show Description</Form.Label>
+              <Form.Label id="form-label">Show Description</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Description Here" name="showDescription" value={currentShow.showDescription} onChange={handleChange} required />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formShowPoster">
-              <Form.Label>Show Poster</Form.Label>
+              <Form.Label id="form-label">Show Poster</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Poster Here" name="showPoster" value={currentShow.showPoster} onChange={handleChange} required />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Show Genre</Form.Label>
+              <Form.Label id="form-label">Show Genre</Form.Label>
               <Form.Select
                 name="showGenre"
                 required
