@@ -37,25 +37,31 @@ export default function ProfilePage() {
   return (
     <div className="profile-page">
       <div className="user-profile-container">
-        <img className="profile-img" src={profile.image_url} alt={profile.username} style={{ width: '10rem', height: '10rem' }} />
+        <div className="profile-pic">
+          <img className="profile-img-page" src={profile.image_url} alt={profile.username} />
+        </div>
         <h1>{profile.first_name} {profile.last_name}</h1>
         <h2>@{profile.username}</h2>
-        <p>{profile.bio}</p>
+        <section className="profile-bio">{profile.bio}</section>
       </div>
       <div className="user-party-container">
-        <h1>Party List</h1>
-        {parties.length === 0 ? (
-          <p>No parties yet</p>
-        ) : (
-          parties.map((party) => (
-            <div key={party.id}>
-              <img className="show-img" src={party.tv_show?.show_poster} alt={party.tv_show?.show_title} style={{ width: '7rem', height: '10rem' }} />
-              <Link href={`/parties/${party.id}`} passHref>
-                <p>{party.party_name}</p>
-              </Link>
-            </div>
-          ))
-        )}
+        <div className="party-list">
+          <h1>Party List</h1>
+        </div>
+        <div className="parties">
+          {parties.length === 0 ? (
+            <p>No parties yet</p>
+          ) : (
+            parties.map((party) => (
+              <div key={party.id}>
+                <img className="show-img" src={party.tv_show?.show_poster} alt={party.tv_show?.show_title} style={{ width: '7rem', height: '10rem' }} />
+                <Link href={`/parties/${party.id}`} passHref>
+                  <section className="party-name">{party.party_name}</section>
+                </Link>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

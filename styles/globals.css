@@ -37,6 +37,11 @@ body {
   text-align: center;
 }
 
+.card-link:hover, .party-name:hover, .party-title:hover, .show-title:hover {
+  color:#3EFEFE;
+  cursor: pointer;
+}
+
 .sign-in-logo {
   max-width: 30%;
   max-height: 100%;
@@ -233,6 +238,9 @@ body {
 .profile-page {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 2rem;
 }
 
 .community-page {
@@ -244,6 +252,7 @@ body {
   flex-basis: 44%;
   flex-grow: 2;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .user-card {
@@ -261,4 +270,73 @@ body {
   object-position: 100% 2;
   width: 10rem;
   height: 10rem;
+}
+
+h1 {
+  color: white;
+  font-size: x-large;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #3EFEFE;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: large;
+}
+
+.profile-bio {
+  color: white;
+}
+
+.user-party-container {
+  /* margin-right: 90vh; */
+  display: flex;
+  flex-direction: column;
+  flex-basis: 22%;
+  flex-grow: 2;
+  flex-wrap: wrap;
+}
+
+.parties {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.user-profile-container {
+  width: 40vh;
+  height: 60vh;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border-radius: 1rem;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+
+.user-profile-container > .profile-bio {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.user-profile-container > h1, .profile-pic, h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img-page {
+  height: 10rem;
+  width: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-pic {
+  margin-top: 2rem;
 }
