@@ -15,7 +15,7 @@ export default function SearchBar({ onChange }) {
             className="search-input"
             id="search"
             name="search"
-            placeholder="search title"
+            placeholder="search"
             onChange={handleChange}
             type="text"
           />

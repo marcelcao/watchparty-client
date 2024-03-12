@@ -90,7 +90,7 @@ function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
     <>
       {(obj.id) ? (
         <Button onClick={handleShow} className="show-modal-update">
-          <p className="form-label">Update</p>
+          <p className="form-label">Edit Show</p>
         </Button>
       ) : (
         <Button onClick={handleShow} className="show-modal-create">

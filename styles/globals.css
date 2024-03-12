@@ -235,7 +235,7 @@ body {
   justify-content: right;
 }
 
-.profile-page {
+.profile-page, .single-tv-show {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -288,8 +288,7 @@ h2 {
   color: white;
 }
 
-.user-party-container {
-  /* margin-right: 90vh; */
+.user-party-container, .show-details-container {
   display: flex;
   flex-direction: column;
   flex-basis: 22%;
@@ -317,6 +316,19 @@ h2 {
   flex-direction: column;
 }
 
+.show-body {
+  width: 40vh;
+  height: 70vh;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .user-profile-container > .profile-bio {
   margin-left: 3rem;
   margin-right: 3rem;
@@ -324,7 +336,7 @@ h2 {
   text-align: center;
 }
 
-.user-profile-container > h1, .profile-pic, h2 {
+.user-profile-container > h1, .profile-pic, h2, .show-img-container {
   display: flex;
   justify-content: center;
 }
@@ -336,8 +348,18 @@ h2 {
   border-radius: 50%;
 }
 
-.profile-pic {
+.show-img {
+  height: 18rem;
+  width: 12rem;
+  object-fit: cover;
+}
+
+.profile-pic, .show-img-container {
   margin-top: 2rem;
+}
+
+.show-img-container {
+  margin-bottom: 2rem;
 }
 
 .user-shows-container, .parties-container {
@@ -361,4 +383,71 @@ h2 {
 .search-input {
   min-width: 25rem;
   border-radius: .5rem;
+}
+
+.show-title {
+   display: flex;
+   justify-content: left;
+}
+
+.show-description {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: left;
+}
+
+.show-genre {
+  text-align: left;
+  font-size: x-large;
+  color: #3EFEFE;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+#show-title-header {
+  color: white;
+  font-size: 2rem;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.description-details, .is-watching {
+   margin-top: 1rem;
+}
+
+.is-watching {
+  text-align: left;
+  font-size: medium;
+  color: #3EFEFE;
+}
+
+.show-modal-update, .delete-show-btn, .mark-show-btn {
+  background-color: #45208F;
+  border-color: #5932a9;
+  color:#3EFEFE;
+  font-family: 'Archivo Black', sans-serif;
+  width: 30vh;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.delete-show-btn {
+  background-color: #3EFEFE;
+  border-color:#3EFEFE;
+  color:#45208F;
+  font-family: 'Archivo Black', sans-serif;
+  width: 30vh;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.show-modal-update:hover, .mark-show-btn:hover {
+  background-color: #3c1d79;
+  border-color: #5932a9;
+  color:#3EFEFE;
+}
+
+.delete-show-btn:hover {
+  background-color: #36d8d8;
+  border-color: #36d8d8;
+  color:#3c1d79;
 }
