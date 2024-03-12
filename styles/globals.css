@@ -288,7 +288,7 @@ h2 {
   color: white;
 }
 
-.user-party-container, .show-details-container {
+.user-party-container, .show-details-container, .party-details-container {
   display: flex;
   flex-direction: column;
   flex-basis: 22%;
@@ -316,9 +316,22 @@ h2 {
   flex-direction: column;
 }
 
-.show-body {
+.show-body, .party-body {
   width: 40vh;
   height: 70vh;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.party-body {
+  width: 40vh;
+  height: 100vh;
   background: rgba(37, 22, 67, 0.45);
   box-shadow: 0 8px 32px 0 #6F6CEB;
   backdrop-filter: blur( 2px );
@@ -341,13 +354,19 @@ h2 {
   justify-content: center;
 }
 
-.profile-img-page {
+.profile-img-page{
   height: 10rem;
   width: 10rem;
   object-fit: cover;
   border-radius: 50%;
 }
 
+.comment-img {
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
 .show-img {
   height: 18rem;
   width: 12rem;
@@ -385,26 +404,26 @@ h2 {
   border-radius: .5rem;
 }
 
-.show-title {
+.show-title, .party-name {
    display: flex;
    justify-content: left;
 }
 
-.show-description {
+.show-description, .party-description {
   display: flex;
   flex-direction: column;
   color: white;
   text-align: left;
 }
 
-.show-genre {
+.show-genre, .party-organizer {
   text-align: left;
   font-size: x-large;
   color: #3EFEFE;
   font-family: 'Archivo Black', sans-serif;
 }
 
-#show-title-header {
+#show-title-header, #party-name-header {
   color: white;
   font-size: 2rem;
   font-family: 'Archivo Black', sans-serif;

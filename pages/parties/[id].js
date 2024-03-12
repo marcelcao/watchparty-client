@@ -72,42 +72,44 @@ function SingleParty() {
 
   return (
     <article className="single-tv-show">
-      <div className="show-body">
-        <div className="show-img-container">
-          <img className="show-img" src={singleParty.tv_show?.show_poster} alt={singleParty.tv_show?.show_title} style={{ width: '7rem', height: '10rem' }} />
-          <div className="show-info-btns">
-            {(singleParty.organizer?.id === user.id) ? (<PartyModal obj={singleParty} fetchSingleParty={fetchSingleParty} />) : '' }
-            {(singleParty.organizer?.id === user.id) ? (
-              <Button className="delete-party-btn" onClick={deleteThisParty}>
-                Delete Party
-              </Button>
-            ) : ''}
-          </div>
+      <div className="party-body">
+        <div className="party-img-container">
+          <img className="show-img" src={singleParty.tv_show?.show_poster} alt={singleParty.tv_show?.show_title} />
         </div>
-        <div className="party-details-container">
-          <h1>{singleParty.party_name}</h1>
-          <h2>Organized by: @{singleParty.organizer?.username}</h2>
-          <h3>{singleParty.date} at {singleParty.time}</h3>
-          <p>{singleParty.party_description}</p>
-          <h3>Discord Link:</h3>
-          <p>{singleParty.discord_link}</p>
+        {(singleParty.organizer?.id === user.id) ? (<PartyModal obj={singleParty} fetchSingleParty={fetchSingleParty} />) : '' }
+        {(singleParty.organizer?.id === user.id) ? (
+          <Button className="delete-party-btn" onClick={deleteThisParty}>
+            Delete Party
+          </Button>
+        ) : ''}
+        <div className="party-attendees">
           <h3>Attendees:</h3>
           {partyAttendees.map((attendee) => (
             <AttendeeCard key={attendee.id} obj={attendee} user={user} onUpdate={getAllPartyAttendees} />
           ))}
         </div>
-        <div>
-          <CommentForm user={user} partyId={Number(id)} onSubmit={getAllComments} />
+      </div>
+      <div className="party-details-container">
+        <div className="party-name">
+          <h1 id="party-name-header">{singleParty.party_name}</h1>
         </div>
+        <div className="party-description">
+          <section className="party-organizer">Organized by: @{singleParty.organizer?.username}</section>
+          <section>On {singleParty.date} at {singleParty.time}</section>
+          <section>{singleParty.party_description}</section>
+          <section>Discord Link: {singleParty.discord_link}</section>
+        </div>
+        <CommentForm user={user} partyId={Number(id)} onSubmit={getAllComments} />
         <div className="party-comments-container">
           {comments.map((com) => (
             editComment === com.id ? (
               <CommentForm key={com.id} user={user} obj={com} cancelEdit={cancelCommentEdit} onSubmit={getAllComments} partyId={Number(id)} />
             ) : (
               <div key={com.id}>
-                <p>Comment by: @{com.author?.username}</p>
-                <p>Posted On: {com.posted_on}</p>
+                <img className="comment-img" src={com.author?.image_url} alt={com.author?.username} />
+                <p>@{com.author?.username}:</p>
                 <p>{com.comment}</p>
+                <p>Posted On: {com.posted_on}</p>
                 <div>{(user.uid === com.author?.uid) ? (<Button className="delete-button" variant="black" onClick={() => deleteComment(com.id)}>Delete</Button>) : ''}</div>
                 <div>{(user.uid === com.author?.uid) ? (<Button className="edit-button" variant="black" onClick={() => handleEditComment(com.id)}>Edit</Button>) : ''}</div>
               </div>
