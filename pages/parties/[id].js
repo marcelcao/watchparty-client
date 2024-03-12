@@ -74,7 +74,7 @@ function SingleParty() {
     <article className="single-tv-show">
       <div className="party-body">
         <div className="party-img-container">
-          <img className="show-img" src={singleParty.tv_show?.show_poster} alt={singleParty.tv_show?.show_title} />
+          <img className="party-img" src={singleParty.tv_show?.show_poster} alt={singleParty.tv_show?.show_title} />
         </div>
         {(singleParty.organizer?.id === user.id) ? (<PartyModal obj={singleParty} fetchSingleParty={fetchSingleParty} />) : '' }
         {(singleParty.organizer?.id === user.id) ? (
@@ -83,7 +83,7 @@ function SingleParty() {
           </Button>
         ) : ''}
         <div className="party-attendees">
-          <h3>Attendees:</h3>
+          <h1>Attendees:</h1>
           {partyAttendees.map((attendee) => (
             <AttendeeCard key={attendee.id} obj={attendee} user={user} onUpdate={getAllPartyAttendees} />
           ))}
@@ -95,10 +95,11 @@ function SingleParty() {
         </div>
         <div className="party-description">
           <section className="party-organizer">Organized by: @{singleParty.organizer?.username}</section>
-          <section>On {singleParty.date} at {singleParty.time}</section>
-          <section>{singleParty.party_description}</section>
+          <section className="description-details">When: {singleParty.date} at {singleParty.time}</section>
+          <section className="description-details">{singleParty.party_description}</section>
           <section>Discord Link: {singleParty.discord_link}</section>
         </div>
+        <h1>Leave a Comment</h1>
         <CommentForm user={user} partyId={Number(id)} onSubmit={getAllComments} />
         <div className="party-comments-container">
           {comments.map((com) => (

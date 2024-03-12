@@ -15,13 +15,17 @@ export default function AttendeeCard({ obj, onUpdate, user }) {
 
   return (
     <>
-      <Card className="user-card">
-        <Card.Body className="user-card-body">
-          <img className="show-img" src={obj.user?.image_url} alt={obj.user?.username} style={{ width: '3rem', height: '3rem' }} />
-          <Link href={`/profile/${obj.user?.username}`} passHref>
-            <Card.Text className="card-link">{obj.user?.username}</Card.Text>
-          </Link>
-          {(user.id === obj.party?.organizer ? (<Button className="delete-button" variant="black" onClick={() => removeAttendeeAsAdmin(obj.id)}>X</Button>) : '')}
+      <Card className="attendee-card">
+        <div className="delete-attendee-btn">
+          {(user.id === obj.party?.organizer ? (<Button className="delete-attendee" onClick={() => removeAttendeeAsAdmin(obj.id)}>X</Button>) : '')}
+        </div>
+        <Card.Body className="attendee-card-body">
+          <div className="attendee-body">
+            <img className="attendee-img" src={obj.user?.image_url} alt={obj.user?.username} style={{ width: '2rem', height: '2rem' }} />
+            <Link href={`/profile/${obj.user?.username}`} passHref>
+              <Card.Text className="card-link">@{obj.user?.username}</Card.Text>
+            </Link>
+          </div>
         </Card.Body>
       </Card>
     </>
