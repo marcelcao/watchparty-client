@@ -314,7 +314,6 @@ h2 {
   -webkit-backdrop-filter: blur( 2px );
   border-radius: 1rem;
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
 }
 
@@ -339,4 +338,27 @@ h2 {
 
 .profile-pic {
   margin-top: 2rem;
+}
+
+.user-shows-container, .parties-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.show-cards-container, .party-cards-container {
+  display: flex;
+  flex-basis: 44%;
+  flex-grow: 2;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.search-input {
+  min-width: 25rem;
+  border-radius: .5rem;
 }

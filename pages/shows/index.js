@@ -23,6 +23,8 @@ function AllShows() {
     setShowTVShow(filter);
   };
 
+  const alphabeticalShows = showTVShow.sort((a, b) => a.show_title.localeCompare(b.show_title));
+
   useEffect(() => {
     getUserShows();
   }, []);
@@ -38,19 +40,15 @@ function AllShows() {
   return (
     <>
       <div className="user-shows-container">
-        <div>
-          <div>
-            Your TV Shows:
-          </div>
-          <div>
-            <TVShowModal fetchShows={fetchShows} />
-          </div>
-          <div className="search-rout">
-            <SearchBar onChange={(query) => filterSearchResult(query)} />
-          </div>
+        <h1 id="home-header">Your Shows</h1>
+        <div className="search-show">
+          <SearchBar onChange={(query) => filterSearchResult(query)} />
         </div>
-        <div className="show-card-contain">
-          {showTVShow.map((show) => (
+        <TVShowModal fetchShows={fetchShows} />
+      </div>
+      <div className="show-card-wrapper">
+        <div className="show-cards-container">
+          {alphabeticalShows.map((show) => (
             <section key={`show--${show.id}`} className="show">
               <ShowCard showObj={show} />
             </section>
