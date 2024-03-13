@@ -37,7 +37,7 @@ body {
   text-align: center;
 }
 
-.card-link:hover, .party-name:hover, .party-title:hover, .show-title:hover {
+.card-link:hover, .party-name:hover, .party-title:hover, .show-title:hover, .comment-user-link {
   color:#3EFEFE;
   cursor: pointer;
 }
@@ -128,6 +128,7 @@ body {
   position: relative;
   bottom: 0;
   margin-top: 5rem;
+  width: 100%;
 }
 
 .welcome-message {
@@ -367,6 +368,8 @@ h2 {
   width: 5rem;
   object-fit: cover;
   border-radius: 50%;
+  margin-top: 1rem;
+  margin-left: 2rem;;
 }
 .show-img, .party-img {
   height: 18rem;
@@ -466,7 +469,7 @@ h2 {
   color:#3EFEFE;
 }
 
-.delete-show-btn:hover, .delete-party-btn {
+.delete-show-btn:hover, .delete-party-btn:hover, .submit-comment-btn:hover {
   background-color: #36d8d8;
   border-color: #36d8d8;
   color:#3c1d79;
@@ -513,7 +516,7 @@ h2 {
   font-size: x-small;
 }
 
-.delete-attendee:hover {
+.delete-attendee:hover, .delete-comment-btn:hover  {
   background: transparent;
   border: transparent;
   color:#36d8d8;
@@ -550,4 +553,66 @@ h2 {
 .submit-btn-wrapper {
   display: flex;
   justify-content: right;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-details {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.comment-wrapper {
+  background-color: #26265c;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 24px 0 #4b49b2;
+  backdrop-filter: blur( 3px );
+  -webkit-backdrop-filter: blur( 3px );
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.user-edit-comment, .user-delete-comment {
+  display: flex;
+  justify-content: right;
+  margin-right: 1rem;
+}
+
+.delete-comment-btn {
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 500;
+  font-size: large;
+}
+
+.edit-comment-btn, .edit-comment-btn:hover {
+  color: #3EFEFE;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.comment-user-link {
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 300;
+  font-size: large;
+}
+
+.cancel-edit-comment {
+  display: flex;
+  justify-content: right;
+}
+
+.cancel-comment, .cancel-comment:hover {
+  background: transparent;
+  border: transparent;
+  font-size: large;
+  font-family: 'Archivo Black', sans-serif;
+  color: #55eeee;
+  font-weight: 400;
 }

@@ -67,6 +67,13 @@ const CommentForm = ({
   return (
     <>
       <Form onSubmit={handleSubmit} className="comment-form-cont">
+        <div className="cancel-edit-comment">
+          {obj.id ? (
+            <div>
+              <Button onClick={cancelEdit} className="cancel-comment">X</Button>
+            </div>
+          ) : ''}
+        </div>
         <textarea
           name="comment"
           className="comment-input"
@@ -75,11 +82,6 @@ const CommentForm = ({
           value={currentComment.comment}
           onChange={handleChange}
         />
-        {obj.id ? (
-          <div>
-            <Button onClick={cancelEdit}>X</Button>
-          </div>
-        ) : ''}
         <div className="submit-btn-wrapper">
           <Button type="submit" className="submit-comment-btn">
             {obj.id ? 'Update' : 'Add'} Comment

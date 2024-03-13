@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import {
@@ -106,13 +107,23 @@ function SingleParty() {
             editComment === com.id ? (
               <CommentForm key={com.id} user={user} obj={com} cancelEdit={cancelCommentEdit} onSubmit={getAllComments} partyId={Number(id)} />
             ) : (
-              <div key={com.id}>
-                <img className="comment-img" src={com.author?.image_url} alt={com.author?.username} />
-                <p>@{com.author?.username}:</p>
-                <p>{com.comment}</p>
-                <p>Posted On: {com.posted_on}</p>
-                <div>{(user.uid === com.author?.uid) ? (<Button className="delete-button" variant="black" onClick={() => deleteComment(com.id)}>Delete</Button>) : ''}</div>
-                <div>{(user.uid === com.author?.uid) ? (<Button className="edit-button" variant="black" onClick={() => handleEditComment(com.id)}>Edit</Button>) : ''}</div>
+              <div key={com.id} className="comment-wrapper">
+                <div className="user-delete-comment">
+                  {(user.uid === com.author?.uid) ? (<Button className="delete-comment-btn" variant="black" onClick={() => deleteComment(com.id)}>X</Button>) : ''}
+                </div>
+                <div className="comment-body">
+                  <img className="comment-img" src={com.author?.image_url} alt={com.author?.username} />
+                  <div className="comment-details">
+                    <Link href={`/profile/${com.author?.username}`} passHref>
+                      <section className="comment-user-link">@{com.author?.username}</section>
+                    </Link>
+                    <p>{com.comment}</p>
+                    <p>Posted On: {com.posted_on}</p>
+                  </div>
+                </div>
+                <div className="user-edit-comment">
+                  {(user.uid === com.author?.uid) ? (<Button className="edit-comment-btn" variant="black" onClick={() => handleEditComment(com.id)}>Edit</Button>) : ''}
+                </div>
               </div>
             )
           ))}

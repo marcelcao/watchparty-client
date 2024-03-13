@@ -98,7 +98,7 @@ function PartyModal({ obj, fetchParties, fetchSingleParty }) {
     <>
       {(obj.id) ? (
         <Button onClick={handleShow} className="party-modal-update">
-          <p className="form-label">Update</p>
+          <p className="form-label">Update Party</p>
         </Button>
       ) : (
         <Button onClick={handleShow} className="party-modal-create">
