@@ -115,6 +115,11 @@ body {
   color: white;
 }
 
+.sign-out-container {
+  position: relative;
+  right: 0;
+}
+
 #app-footer {
   margin-top: 2rem;
   padding-top: 1rem;
@@ -123,7 +128,7 @@ body {
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
-  height: 10vh;
+  height: 12vh;
   text-align: center;
   position: relative;
   bottom: 0;
@@ -246,6 +251,7 @@ body {
 
 .community-page {
   margin-top: 1rem;
+  height: 100vh;
 }
 
 .users-container {

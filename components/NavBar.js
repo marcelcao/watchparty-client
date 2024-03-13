@@ -37,13 +37,13 @@ export default function NavBar({ user }) {
                 <Nav.Link id="navlink">Community</Nav.Link>
               </Link>
             </Nav>
-            <Nav className="sign-out-container">
-              <Button className="sign-out-btn" onClick={signOut}>
-                Sign Out
-              </Button>
-            </Nav>
           </Nav>
         </Navbar.Collapse>
+        <Nav className="sign-out-container">
+          <Button className="sign-out-btn" onClick={signOut}>
+            Sign Out
+          </Button>
+        </Nav>
       </Container>
     </Navbar>
   );
