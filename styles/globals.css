@@ -522,7 +522,7 @@ h2 {
   font-size: x-small;
 }
 
-.delete-attendee:hover, .delete-comment-btn:hover  {
+.delete-attendee:hover, .delete-comment-btn:hover, .delete-attendee:active, .delete-comment-btn:active {
   background: transparent;
   border: transparent;
   color:#36d8d8;
@@ -597,7 +597,7 @@ h2 {
   font-size: large;
 }
 
-.edit-comment-btn, .edit-comment-btn:hover {
+.edit-comment-btn, .edit-comment-btn:hover, .edit-comment-btn:hover {
   color: #3EFEFE;
   margin-bottom: 1rem;
   font-weight: 400;
@@ -614,7 +614,7 @@ h2 {
   justify-content: right;
 }
 
-.cancel-comment, .cancel-comment:hover {
+.cancel-comment, .cancel-comment:hover, .cancel-comment:active {
   background: transparent;
   border: transparent;
   font-size: large;
