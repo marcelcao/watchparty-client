@@ -19,30 +19,32 @@ function RegisterForm({ user, updateUser }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="register-form">
       <Form.Group className="mb-3" controlId="formFirstName">
-        <Form.Label>First Name</Form.Label>
+        <Form.Label className="register-form-title">First Name</Form.Label>
         <Form.Control as="textarea" name="firstName" required placeholder="Enter your first name" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formLastName">
-        <Form.Label>Last Name</Form.Label>
+        <Form.Label className="register-form-title">Last Name</Form.Label>
         <Form.Control as="textarea" name="lastName" required placeholder="Enter your last name" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formUsername">
-        <Form.Label>Username</Form.Label>
+        <Form.Label className="register-form-title">Username</Form.Label>
         <Form.Control as="textarea" name="username" required placeholder="Enter your username" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formImageUrl">
-        <Form.Label>Profile Image URL</Form.Label>
+        <Form.Label className="register-form-title">Profile Image URL</Form.Label>
         <Form.Control as="textarea" name="imageUrl" required placeholder="Image URL here" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formImageUrl">
-        <Form.Label>Bio</Form.Label>
+        <Form.Label className="register-form-title">Bio</Form.Label>
         <Form.Control as="textarea" name="bio" required placeholder="User Bio here" onChange={({ target }) => setFormData((prev) => ({ ...prev, [target.name]: target.value }))} />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <div className="register-btn-container">
+        <Button className="register-form-btn" type="submit">
+          Submit
+        </Button>
+      </div>
     </Form>
   );
 }

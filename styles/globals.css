@@ -1,12 +1,10 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
 
 a {
   color: inherit;
@@ -18,12 +16,15 @@ a {
 }
 
 body {
-  background-color: white;
-}
-
-.party-card {
-  max-height: 20rem;
-  max-width: 10rem;
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-image: linear-gradient(to bottom, #6f6ceb, #6b68e3, #6664da, #6260d2, #5e5cca, #5856be, #5250b1, #4c4aa5, #424192, #383880, #2f2f6e, #26265c);
+  min-height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .show-card-contain, .party-card-contain {
@@ -31,6 +32,608 @@ body {
   flex-direction: row;
 }
 
-.card-link {
+.card-link, .show-title, .party-title {
   cursor: pointer;
+  text-align: center;
+}
+
+.card-link:hover, .party-name:hover, .party-title:hover, .show-title:hover, .comment-user-link {
+  color:#3EFEFE;
+  cursor: pointer;
+}
+
+.sign-in-logo {
+  max-width: 30%;
+  max-height: 100%;
+}
+
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+.sign-in-text {
+  margin-top: -5rem;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.logo-container, .sign-in-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.google-button {
+  height: 2rem;
+}
+
+.sign-in-btn {
+  background-color: white;
+  height: 3rem;
+  color:#636562;
+  width: 7rem;
+  border-color: #636562;
+}
+
+.sign-in-btn:hover {
+  background-color: #45208F;
+  border-color: #45208F;
+}
+
+.sign-in-footer {
+  text-align: center;
+  color: #3EFEFE;
+  margin-top: 10rem;
+}
+
+#nav {
+  background: #6F6CEB;
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  margin-top: 2vh;
+}
+
+.nav {
+  max-height: 10vh;
+}
+
+#navlink {
+  color: #3EFEFE;
+}
+
+.nav-logo {
+  width: 10rem;
+}
+
+.sign-out-btn {
+  background-color: #6d38d6;
+  border-color: #6F6CEB;
+  color: white;
+}
+
+.sign-out-container {
+  position: relative;
+  right: 0;
+}
+
+#app-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  color: #3EFEFE;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  height: 12vh;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.welcome-message {
+  text-align: center;
+  color: #45208F;
+  font-size: 4rem;
+  margin-top: 2rem;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+#home-header {
+  color: white;
+  font-size: 2rem;
+  margin-top: 1rem;
+  padding-top: .5rem;
+  margin-bottom: 2rem;
+}
+
+.user-shows-container, .watch-parties-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.show-modal-create, .party-modal-create {
+  color: #3EFEFE;
+  background: #6f6ceb;
+  border-color: transparent;
+  font-size: 3rem;
+  height: 5rem;
+  background-color: transparent;
+  font-weight: 900;
+}
+
+.show-modal-create:active, .party-modal-create:active {
+  background: #6f6ceb;
+  background-color: transparent;
+}
+
+.show-modal-create:hover, .party-modal-update:hover {
+  color: #3EFEFE;
+  background: #6f6ceb;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.party-card, .show-card {
+  max-width: 18rem;
+  max-height: 25rem;
+  background-color: transparent;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+
+.show-card-body, .party-card-body {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -105%;
+  position: absolute;
+  background: rgba(111, 108, 235, .4);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 1s;
+}
+
+.party-card:hover .card-body, .show-card:hover .card-body {
+  right: 0;
+}
+
+.slick-slide > div {
+  margin: 0;
+}
+
+.party-subtext {
+  font-size: medium;
+  color: white;
+}
+
+.party-title, .show-title {
+  font-family: 'Archivo Black', sans-serif;
+  color: white;
+  font-size: xx-large;
+}
+
+.form-head {
+  font-family: 'Archivo Black', sans-serif;
+  color: #6f6ceb;
+  font-size: xx-large;
+}
+
+.submit-btn, .submit-btn:hover, .submit-btn:active {
+  color: white;
+  background-color: #6f6ceb;
+  border-color: #6f6ceb;
+}
+
+.modal-submit {
+  display: flex;
+  justify-content: right;
+}
+
+.profile-page, .single-tv-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.community-page {
+  margin-top: 1rem;
+  height: 100vh;
+}
+
+.users-container {
+  display: flex;
+  flex-basis: 44%;
+  flex-grow: 2;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-card {
+  background-color: transparent;
+  border: transparent;
+  min-width: 12rem;
+  max-height: 12rem;
+  align-items: center;
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.profile-img {
+  object-fit: cover;
+  object-position: 100% 2;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+h1 {
+  color: white;
+  font-size: x-large;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #3EFEFE;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: large;
+}
+
+.profile-bio {
+  color: white;
+}
+
+.user-party-container, .show-details-container, .party-details-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 22%;
+  flex-grow: 2;
+  flex-wrap: wrap;
+}
+
+.parties {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.user-profile-container {
+  width: 40vh;
+  height: 60vh;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.show-body, .party-body {
+  width: 40vh;
+  height: 100vh;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.party-body {
+  width: 40vh;
+  height: 100vh;
+  background: rgba(37, 22, 67, 0.45);
+  box-shadow: 0 8px 32px 0 #6F6CEB;
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile-container > .profile-bio {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.user-profile-container > h1, .profile-pic, h2, .show-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img-page{
+  height: 10rem;
+  width: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment-img {
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 1rem;
+  margin-left: 2rem;;
+}
+.show-img, .party-img {
+  height: 18rem;
+  width: 12rem;
+  object-fit: cover;
+}
+
+.profile-pic, .show-img-container, .party-img-container {
+  margin-top: 2rem;
+}
+
+.show-img-container, .party-img-container {
+  margin-bottom: 2rem;
+}
+
+.user-shows-container, .parties-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.show-cards-container, .party-cards-container {
+  display: flex;
+  flex-basis: 44%;
+  flex-grow: 2;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.search-input {
+  min-width: 25rem;
+  border-radius: .5rem;
+}
+
+.show-title, .party-name {
+   display: flex;
+   justify-content: left;
+}
+
+.show-description, .party-description {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: left;
+}
+
+.show-genre, .party-organizer {
+  text-align: left;
+  font-size: x-large;
+  color: #3EFEFE;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+#show-title-header, #party-name-header {
+  color: white;
+  font-size: 2rem;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.description-details, .is-watching {
+   margin-top: 1rem;
+}
+
+.is-watching {
+  text-align: left;
+  font-size: medium;
+  color: #3EFEFE;
+}
+
+.show-modal-update, .delete-show-btn, .mark-show-btn, .party-modal-update {
+  background-color: #45208F;
+  border-color: #5932a9;
+  color:#3EFEFE;
+  font-family: 'Archivo Black', sans-serif;
+  width: 30vh;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.delete-show-btn, .delete-party-btn, .register-form-btn  {
+  background-color: #3EFEFE;
+  border-color:#3EFEFE;
+  color:#45208F;
+  font-family: 'Archivo Black', sans-serif;
+  width: 30vh;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.show-modal-update:hover, .mark-show-btn:hover, .party-modal-update {
+  background-color: #3c1d79;
+  border-color: #5932a9;
+  color:#3EFEFE;
+}
+
+.delete-show-btn:hover, .delete-party-btn:hover, .submit-comment-btn:hover, .register-form-btn:hover {
+  background-color: #36d8d8;
+  border-color: #36d8d8;
+  color:#3c1d79;
+}
+
+.party-attendees > h1 {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.user-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.attendee-body {
+  display: flex;
+  gap: 1rem;
+  color: white;
+  font-weight: 500;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.user-card {
+  background-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.attendee-card {
+  background-color: #26265c;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 12px 0 #4b49b2;
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+}
+
+.attendee-img {
+  border-radius: 50%;
+}
+
+.delete-attendee {
+  background: transparent;
+  border: transparent;
+  font-size: x-small;
+}
+
+.delete-attendee:hover, .delete-comment-btn:hover, .delete-attendee:active, .delete-comment-btn:active {
+  background: transparent;
+  border: transparent;
+  color:#36d8d8;
+}
+
+.delete-attendee-btn {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 500;
+}
+
+.comment-form-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.party-details-container > h1 {
+  margin-top: 3rem;
+}
+
+.submit-comment-btn {
+  background-color: #3EFEFE;
+  border-color:#3EFEFE;
+  color:#45208F;
+  font-family: 'Archivo Black', sans-serif;
+  width: 30vh;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.submit-btn-wrapper {
+  display: flex;
+  justify-content: right;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-details {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.comment-wrapper {
+  background-color: #26265c;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 24px 0 #4b49b2;
+  backdrop-filter: blur( 3px );
+  -webkit-backdrop-filter: blur( 3px );
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.user-edit-comment, .user-delete-comment {
+  display: flex;
+  justify-content: right;
+  margin-right: 1rem;
+}
+
+.delete-comment-btn {
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 500;
+  font-size: large;
+}
+
+.edit-comment-btn, .edit-comment-btn:hover, .edit-comment-btn:hover {
+  color: #3EFEFE;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.comment-user-link {
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 300;
+  font-size: large;
+}
+
+.cancel-edit-comment {
+  display: flex;
+  justify-content: right;
+}
+
+.cancel-comment, .cancel-comment:hover, .cancel-comment:active {
+  background: transparent;
+  border: transparent;
+  font-size: large;
+  font-family: 'Archivo Black', sans-serif;
+  color: #55eeee;
+  font-weight: 400;
+}
+
+.register-form {
+  margin-top: 2rem;
+}
+
+.register-form-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: medium;
+  color: #4beded;
+}
+
+.register-btn-container {
+  display: flex;
+  justify-content: right;
 }

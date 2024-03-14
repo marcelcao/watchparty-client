@@ -88,9 +88,15 @@ function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
 
   return (
     <>
-      <Button onClick={handleShow} className="rout-modal">
-        <p className="form-label">{obj.id ? 'Update TV Show' : '+'}</p>
-      </Button>
+      {(obj.id) ? (
+        <Button onClick={handleShow} className="show-modal-update">
+          <p className="form-label">Edit Show</p>
+        </Button>
+      ) : (
+        <Button onClick={handleShow} className="show-modal-create">
+          <p className="form-label">+</p>
+        </Button>
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton id="modal-head">
@@ -101,22 +107,22 @@ function TVShowModal({ obj, fetchShows, fetchSingleShow }) {
           <Form onSubmit={handleClose}>
 
             <Form.Group className="mb-3" controlId="formShowTitle">
-              <Form.Label className="form-label">Show Title</Form.Label>
+              <Form.Label id="form-label">Show Title</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Title Here" name="showTitle" value={currentShow.showTitle} onChange={handleChange} required />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formShowDescription">
-              <Form.Label>Show Description</Form.Label>
+              <Form.Label id="form-label">Show Description</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Description Here" name="showDescription" value={currentShow.showDescription} onChange={handleChange} required />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formShowPoster">
-              <Form.Label>Show Poster</Form.Label>
+              <Form.Label id="form-label">Show Poster</Form.Label>
               <Form.Control className="form-placeholder" type="text" placeholder="Show Poster Here" name="showPoster" value={currentShow.showPoster} onChange={handleChange} required />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Show Genre</Form.Label>
+              <Form.Label id="form-label">Show Genre</Form.Label>
               <Form.Select
                 name="showGenre"
                 required

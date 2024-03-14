@@ -23,6 +23,8 @@ function AllParties() {
     setShowParties(filter);
   };
 
+  const alphabeticalParties = showParties.sort((a, b) => a.party_name.localeCompare(b.party_name));
+
   useEffect(() => {
     getWatchParties();
   }, []);
@@ -31,22 +33,22 @@ function AllParties() {
     setShowParties(parties);
   }, [parties]);
 
+  useEffect(() => {
+    document.title = 'Parties - Watch Party';
+  }, []);
+
   return (
     <>
-      <div className="watch-parties-container">
-        <div>
-          <div>
-            All Community Watch Parties:
-          </div>
-          <div>
-            <PartyModal fetchParties={fetchParties} />
-          </div>
-          <div className="search-rout">
-            <SearchBar onChange={(query) => filterSearchResult(query)} />
-          </div>
+      <div className="parties-container">
+        <h1 id="home-header">Community Watch Parties</h1>
+        <div className="search-party">
+          <SearchBar onChange={(query) => filterSearchResult(query)} />
         </div>
-        <div className="party-card-contain">
-          {showParties.map((party) => (
+        <PartyModal fetchParties={fetchParties} />
+      </div>
+      <div className="party-card-wrapper">
+        <div className="party-cards-container">
+          {alphabeticalParties.map((party) => (
             <section key={`party--${party.id}`} className="party">
               <PartyCard partyObj={party} onUpdate={getWatchParties} attended={party.attended} />
             </section>
