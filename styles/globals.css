@@ -459,7 +459,7 @@ h2 {
   text-align: center;
 }
 
-.delete-show-btn, .delete-party-btn {
+.delete-show-btn, .delete-party-btn, .register-form-btn  {
   background-color: #3EFEFE;
   border-color:#3EFEFE;
   color:#45208F;
@@ -475,7 +475,7 @@ h2 {
   color:#3EFEFE;
 }
 
-.delete-show-btn:hover, .delete-party-btn:hover, .submit-comment-btn:hover {
+.delete-show-btn:hover, .delete-party-btn:hover, .submit-comment-btn:hover, .register-form-btn:hover {
   background-color: #36d8d8;
   border-color: #36d8d8;
   color:#3c1d79;
@@ -621,4 +621,19 @@ h2 {
   font-family: 'Archivo Black', sans-serif;
   color: #55eeee;
   font-weight: 400;
+}
+
+.register-form {
+  margin-top: 2rem;
+}
+
+.register-form-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: medium;
+  color: #4beded;
+}
+
+.register-btn-container {
+  display: flex;
+  justify-content: right;
 }
