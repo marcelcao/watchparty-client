@@ -7,7 +7,7 @@ export default function Community() {
 
   useEffect(() => {
     getAllUsers().then((data) => setAllUsers(data));
-  }, [allUsers]);
+  }, []);
 
   useEffect(() => {
     document.title = 'Community - Watch Party';
