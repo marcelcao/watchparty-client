@@ -296,7 +296,7 @@ h2 {
   color: white;
 }
 
-.user-party-container, .show-details-container, .party-details-container {
+.user-party-container, .show-details-container, .party-details-container, .user-attended-container {
   display: flex;
   flex-direction: column;
   flex-basis: 22%;
@@ -304,12 +304,16 @@ h2 {
   flex-wrap: wrap;
 }
 
-.parties {
+.parties, .attending {
   display: flex;
   flex-direction: row;
   gap: 2rem;
   color: white;
   margin-top: 1rem;
+}
+
+.attended-list {
+  margin-top: 2rem;
 }
 
 .user-profile-container {

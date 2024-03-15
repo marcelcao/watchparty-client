@@ -108,6 +108,19 @@ const getUserParties = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getUserAttendedParties = (uid) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/partyattendees/view_attended`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${uid}`,
+    },
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getAllParties,
   getSingleParty,
@@ -118,4 +131,5 @@ export {
   leaveParty,
   getPartyAttendees,
   getUserParties,
+  getUserAttendedParties,
 };
