@@ -1,9 +1,6 @@
 <p align="center">
-<img src="https://github.com/marcelcao/watchparty-client/assets/123406421/bf38643d-35f1-49a9-a3a7-aca20cd65a89/>
+  <img src="https://github.com/marcelcao/watchparty-client/assets/123406421/bf38643d-35f1-49a9-a3a7-aca20cd65a89">
 </p>
-
-  ![Watch Party logocropped](https://github.com/marcelcao/watchparty-client/assets/123406421/bf38643d-35f1-49a9-a3a7-aca20cd65a89)
-
 
 # Watch Party - Client Side
 Full-stack Capstone project for Nashville Software School
