@@ -328,9 +328,9 @@ h2 {
   flex-direction: column;
 }
 
-.show-body, .party-body {
+.show-body {
   width: 40vh;
-  height: 100vh;
+  height: 80vh;
   background: rgba(37, 22, 67, 0.45);
   box-shadow: 0 8px 32px 0 #6F6CEB;
   backdrop-filter: blur( 2px );
